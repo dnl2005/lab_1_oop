@@ -1,0 +1,12 @@
+C:\Users\dnl\Desktop\школа\класы\lab_1\lab_1\ViewModel\bin\Debug\net10.0-windows\ViewModel.deps.json
+C:\Users\dnl\Desktop\школа\класы\lab_1\lab_1\ViewModel\bin\Debug\net10.0-windows\ViewModel.dll
+C:\Users\dnl\Desktop\школа\класы\lab_1\lab_1\ViewModel\bin\Debug\net10.0-windows\ViewModel.pdb
+C:\Users\dnl\Desktop\школа\класы\lab_1\lab_1\ViewModel\obj\Debug\net10.0-windows\ViewModel.csproj.AssemblyReference.cache
+C:\Users\dnl\Desktop\школа\класы\lab_1\lab_1\ViewModel\obj\Debug\net10.0-windows\ViewModel.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dnl\Desktop\школа\класы\lab_1\lab_1\ViewModel\obj\Debug\net10.0-windows\ViewModel.AssemblyInfoInputs.cache
+C:\Users\dnl\Desktop\школа\класы\lab_1\lab_1\ViewModel\obj\Debug\net10.0-windows\ViewModel.AssemblyInfo.cs
+C:\Users\dnl\Desktop\школа\класы\lab_1\lab_1\ViewModel\obj\Debug\net10.0-windows\ViewModel.csproj.CoreCompileInputs.cache
+C:\Users\dnl\Desktop\школа\класы\lab_1\lab_1\ViewModel\obj\Debug\net10.0-windows\ViewModel.dll
+C:\Users\dnl\Desktop\школа\класы\lab_1\lab_1\ViewModel\obj\Debug\net10.0-windows\refint\ViewModel.dll
+C:\Users\dnl\Desktop\школа\класы\lab_1\lab_1\ViewModel\obj\Debug\net10.0-windows\ViewModel.pdb
+C:\Users\dnl\Desktop\школа\класы\lab_1\lab_1\ViewModel\obj\Debug\net10.0-windows\ref\ViewModel.dll
