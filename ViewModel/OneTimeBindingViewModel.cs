@@ -1,17 +1,26 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
+﻿using System.Windows.Input;
 
 namespace ViewModel;
 
-public partial class OneTimeBindingViewModel : ObservableObject
+public class OneTimeBindingViewModel : ViewModelBase
 {
-    [ObservableProperty]
-    private string timeStamp = DateTime.Now.ToLongTimeString();
+    private string timeStamp;
+    public string TimeStamp
+    {
+        get => timeStamp;
+        set { timeStamp = value; OnPropertyChanged(); }
+    }
 
 
-    [RelayCommand]
-    private void UpdateTime()
+    public ICommand UpdateTimeCommand { get; }
+
+
+    public OneTimeBindingViewModel()
     {
         TimeStamp = DateTime.Now.ToLongTimeString();
+        UpdateTimeCommand = new RelayCommand(_ =>
+        {
+            TimeStamp = DateTime.Now.ToLongTimeString();
+        });
     }
 }

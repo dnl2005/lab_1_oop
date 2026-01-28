@@ -1,9 +1,11 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿namespace ViewModel;
 
-namespace ViewModel;
-
-public partial class TriggersViewModel : ObservableObject
+public class TriggersViewModel : ViewModelBase
 {
-    [ObservableProperty]
     private bool isActive;
+    public bool IsActive
+    {
+        get => isActive;
+        set { isActive = value; OnPropertyChanged(); }
+    }
 }

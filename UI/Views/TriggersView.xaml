@@ -52,7 +52,7 @@
 
         <!-- DataTrigger -->
         <TextBlock Text="DataTrigger" FontWeight="Bold" />
-        <CheckBox Content="Активировать" IsChecked="{Binding IsActive}" />
+        <CheckBox Foreground="White" Content="Активировать" IsChecked="{Binding IsActive}" />
         <TextBlock Text="Состояние активно"
                    Style="{StaticResource DataTriggerTextStyle}" />
 

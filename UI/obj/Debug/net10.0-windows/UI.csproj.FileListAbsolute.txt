@@ -20,7 +20,6 @@ C:\Users\dnl\Desktop\школа\класы\lab_1\lab_1\UI\obj\Debug\net10.0-wind
 C:\Users\dnl\Desktop\школа\класы\lab_1\lab_1\UI\obj\Debug\net10.0-windows\UI.genruntimeconfig.cache
 C:\Users\dnl\Desktop\школа\класы\lab_1\lab_1\UI\obj\Debug\net10.0-windows\ref\UI.dll
 C:\Users\dnl\Desktop\школа\класы\lab_1\lab_1\UI\obj\Debug\net10.0-windows\UI.csproj.AssemblyReference.cache
-C:\Users\dnl\Desktop\школа\класы\lab_1\lab_1\UI\bin\Debug\net10.0-windows\CommunityToolkit.Mvvm.dll
 C:\Users\dnl\Desktop\школа\класы\lab_1\lab_1\UI\obj\Debug\net10.0-windows\UI.csproj.Up2Date
 C:\Users\dnl\Desktop\школа\класы\lab_1\lab_1\UI\obj\Debug\net10.0-windows\GeneratedInternalTypeHelper.g.cs
 C:\Users\dnl\Desktop\школа\класы\lab_1\lab_1\UI\obj\Debug\net10.0-windows\Views\DefaultBindingView.g.cs
@@ -36,3 +35,4 @@ C:\Users\dnl\Desktop\школа\класы\lab_1\lab_1\UI\obj\Debug\net10.0-wind
 C:\Users\dnl\Desktop\школа\класы\lab_1\lab_1\UI\obj\Debug\net10.0-windows\Views\TriggersView.baml
 C:\Users\dnl\Desktop\школа\класы\lab_1\lab_1\UI\obj\Debug\net10.0-windows\Views\TriggersView.g.cs
 C:\Users\dnl\Desktop\школа\класы\lab_1\lab_1\UI\obj\Debug\net10.0-windows\Theme.baml
+C:\Users\dnl\Desktop\школа\класы\lab_1\lab_1\UI\obj\Debug\net10.0-windows\UI.sourcelink.json

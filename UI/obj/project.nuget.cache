@@ -1,10 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "IJbxqHN90TI=",
+  "dgSpecHash": "iqAmvbryWho=",
   "success": true,
   "projectFilePath": "C:\\Users\\dnl\\Desktop\\школа\\класы\\lab_1\\lab_1\\UI\\UI.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\dnl\\.nuget\\packages\\communitytoolkit.mvvm\\8.4.0\\communitytoolkit.mvvm.8.4.0.nupkg.sha512"
-  ],
+  "expectedPackageFiles": [],
   "logs": []
 }

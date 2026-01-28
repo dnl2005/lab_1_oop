@@ -1,13 +1,19 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿namespace ViewModel;
 
-namespace ViewModel;
-
-public partial class TwoWayBindingViewModel : ObservableObject
+public class TwoWayBindingViewModel : ViewModelBase
 {
-    [ObservableProperty]
     private double userValue = 50;
+    public double UserValue
+    {
+        get => userValue;
+        set { userValue = value; OnPropertyChanged(); }
+    }
 
 
-    [ObservableProperty]
     private bool isEnabledFlag;
+    public bool IsEnabledFlag
+    {
+        get => isEnabledFlag;
+        set { isEnabledFlag = value; OnPropertyChanged(); }
+    }
 }

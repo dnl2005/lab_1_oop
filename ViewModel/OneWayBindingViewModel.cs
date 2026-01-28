@@ -1,22 +1,34 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
+﻿using System.Windows.Input;
 
 namespace ViewModel;
 
-public partial class OneWayBindingViewModel : ObservableObject
+public class OneWayBindingViewModel : ViewModelBase
 {
-    [ObservableProperty]
     private int progressValue = 30;
-
-
-    [ObservableProperty]
-    private string inputText = string.Empty;
-
-
-    [RelayCommand]
-    private void Increase()
+    public int ProgressValue
     {
-        if (ProgressValue < 100)
-            ProgressValue += 10;
+        get => progressValue;
+        set { progressValue = value; OnPropertyChanged(); }
+    }
+
+
+    private string inputText = string.Empty;
+    public string InputText
+    {
+        get => inputText;
+        set { inputText = value; OnPropertyChanged(); }
+    }
+
+
+    public ICommand IncreaseCommand { get; }
+
+
+    public OneWayBindingViewModel()
+    {
+        IncreaseCommand = new RelayCommand(_ =>
+        {
+            if (ProgressValue < 100)
+                ProgressValue += 10;
+        });
     }
 }

@@ -1,9 +1,11 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿namespace ViewModel;
 
-namespace ViewModel;
-
-public partial class DefaultBindingViewModel : ObservableObject
+public class DefaultBindingViewModel: ViewModelBase
 {
-    [ObservableProperty]
-    private string userText = "";
+    private string userText = string.Empty;
+    public string UserText
+    {
+        get => userText;
+        set { userText = value; OnPropertyChanged(); }
+    }
 }
