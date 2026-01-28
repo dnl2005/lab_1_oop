@@ -26,7 +26,9 @@
 
 
         <!-- Привязка через ViewModel -->
-        <TextBox Width="200" Text="{Binding UserText}" />
-        <TextBlock Text="{Binding UserText}" Margin="0,5" />
+        <TextBox Width="200" 
+                 Text="{Binding UserText, UpdateSourceTrigger=PropertyChanged}" />
+        <TextBlock Text="{Binding UserText}" 
+                   Margin="0,5" />
     </StackPanel>
 </UserControl>

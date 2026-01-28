@@ -43,7 +43,7 @@
 
         <!-- TwoWay с CheckBox -->
         <TextBlock Text="TwoWay с логическим типом" FontWeight="Bold" />
-        <CheckBox Content="Флаг активен" IsChecked="{Binding IsEnabledFlag, Mode=TwoWay}" />
+        <CheckBox Foreground="White" Content="Флаг активен" IsChecked="{Binding IsEnabledFlag, Mode=TwoWay}" />
         <TextBlock Text="{Binding IsEnabledFlag, StringFormat=Значение: {0}}" />
     </StackPanel>
 </UserControl>

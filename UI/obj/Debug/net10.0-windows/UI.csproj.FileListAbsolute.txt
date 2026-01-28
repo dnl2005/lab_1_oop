@@ -36,3 +36,4 @@ C:\Users\dnl\Desktop\школа\класы\lab_1\lab_1\UI\obj\Debug\net10.0-wind
 C:\Users\dnl\Desktop\школа\класы\lab_1\lab_1\UI\obj\Debug\net10.0-windows\Views\TriggersView.baml
 C:\Users\dnl\Desktop\школа\класы\lab_1\lab_1\UI\obj\Debug\net10.0-windows\Views\TriggersView.g.cs
 C:\Users\dnl\Desktop\школа\класы\lab_1\lab_1\UI\obj\Debug\net10.0-windows\Theme.baml
+C:\Users\dnl\Desktop\школа\класы\lab_1\lab_1\UI\obj\Debug\net10.0-windows\UI.sourcelink.json
