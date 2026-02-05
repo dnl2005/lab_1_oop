@@ -13,19 +13,15 @@
 
 
     <StackPanel Margin="20">
-        <TextBlock Text="Привязка по умолчанию (TextBox -> TextBlock)"
-                   FontSize="16" Margin="0,0,0,10" />
-
-
         <!-- Прямая привязка к элементу -->
+        <TextBlock Text="Привязка к элементу" FontSize="16" Margin="0,0,0,10" />
         <TextBox x:Name="InputBox" Width="200" />
         <TextBlock Text="{Binding ElementName=InputBox, Path=Text}" Margin="0,5" />
-
-
+        
         <Separator Margin="10" />
 
-
         <!-- Привязка через ViewModel -->
+        <TextBlock Text="Привязка через ViewModel" FontSize="16" Margin="0,0,0,10" />
         <TextBox Width="200" 
                  Text="{Binding UserText, UpdateSourceTrigger=PropertyChanged}" />
         <TextBlock Text="{Binding UserText}" 
