@@ -1,0 +1,369 @@
+﻿<UserControl x:Class="UI.Views.TriggersView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:UI.Views"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800">
+    <UserControl.Resources>
+        <!-- ========= 1. Property Trigger ========= -->
+        <Style x:Key="PropertyTriggerButton"
+               TargetType="Button"
+               BasedOn="{StaticResource {x:Type Button}}">
+            <Setter Property="Background"
+                    Value="{StaticResource PrimaryBrush}" />
+            <Setter Property="Width"
+                    Value="220" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver"
+                         Value="True">
+                    <Setter Property="Background"
+                            Value="{StaticResource AccentBrush}" />
+                    <Setter Property="Foreground"
+                            Value="Black" />
+                </Trigger>
+                <Trigger Property="IsPressed"
+                         Value="True">
+                    <Setter Property="Background"
+                            Value="{StaticResource ErrorBrush}" />
+                    <Setter Property="FontWeight"
+                            Value="ExtraBold" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Property Trigger для TextBox -->
+        <Style x:Key="FocusTriggerTextBox"
+               TargetType="TextBox"
+               BasedOn="{StaticResource {x:Type TextBox}}">
+            <Setter Property="Background"
+                    Value="White" />
+            <Style.Triggers>
+                <Trigger Property="IsFocused"
+                         Value="True">
+                    <Setter Property="Background"
+                            Value="#E3F2FD" />
+                    <Setter Property="FontWeight"
+                            Value="Bold" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- ========= 2. DataTrigger ========= -->
+        <Style x:Key="StatusIndicator"
+               TargetType="Border">
+            <Setter Property="CornerRadius"
+                    Value="20" />
+            <Setter Property="Width"
+                    Value="40" />
+            <Setter Property="Height"
+                    Value="40" />
+            <Setter Property="Background"
+                    Value="Gray" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Status}"
+                             Value="Active">
+                    <Setter Property="Background"
+                            Value="{StaticResource SuccessBrush}" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Status}"
+                             Value="Warning">
+                    <Setter Property="Background"
+                            Value="{StaticResource WarningBrush}" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Status}"
+                             Value="Error">
+                    <Setter Property="Background"
+                            Value="{StaticResource ErrorBrush}" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Status}"
+                             Value="Inactive">
+                    <Setter Property="Background"
+                            Value="Gray" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="StatusText"
+               TargetType="TextBlock">
+            <Setter Property="FontSize"
+                    Value="16" />
+            <Setter Property="FontWeight"
+                    Value="Bold" />
+            <Setter Property="Foreground"
+                    Value="Gray" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Status}"
+                             Value="Active">
+                    <Setter Property="Foreground"
+                            Value="{StaticResource SuccessBrush}" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Status}"
+                             Value="Warning">
+                    <Setter Property="Foreground"
+                            Value="{StaticResource WarningBrush}" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Status}"
+                             Value="Error">
+                    <Setter Property="Foreground"
+                            Value="{StaticResource ErrorBrush}" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- ========= 3. MultiDataTrigger ========= -->
+        <Style x:Key="LoginButtonStyle"
+               TargetType="Button"
+               BasedOn="{StaticResource {x:Type Button}}">
+            <Setter Property="IsEnabled"
+                    Value="False" />
+            <Setter Property="Background"
+                    Value="Gray" />
+            <Setter Property="Content"
+                    Value="Заполните оба поля" />
+            <Style.Triggers>
+                <MultiDataTrigger>
+                    <MultiDataTrigger.Conditions>
+                        <Condition Binding="{Binding HasUsername}"
+                                   Value="True" />
+                        <Condition Binding="{Binding HasPassword}"
+                                   Value="True" />
+                    </MultiDataTrigger.Conditions>
+                    <Setter Property="IsEnabled"
+                            Value="True" />
+                    <Setter Property="Background"
+                            Value="{StaticResource SuccessBrush}" />
+                    <Setter Property="Content"
+                            Value="Войти ✓" />
+                </MultiDataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- ========= 4. MultiTrigger ========= -->
+        <Style x:Key="MultiTriggerTextBox"
+               TargetType="TextBox"
+               BasedOn="{StaticResource {x:Type TextBox}}">
+            <Setter Property="Background"
+                    Value="White" />
+            <Style.Triggers>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="IsFocused"
+                                   Value="True" />
+                        <Condition Property="IsMouseOver"
+                                   Value="True" />
+                    </MultiTrigger.Conditions>
+                    <Setter Property="Background"
+                            Value="#C8E6C9" />
+                    <Setter Property="BorderBrush"
+                            Value="{StaticResource SuccessBrush}" />
+                    <Setter Property="FontWeight"
+                            Value="Bold" />
+                </MultiTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- ========= 5. EventTrigger ========= -->
+        <Style x:Key="EventTriggerBorder"
+               TargetType="Border">
+            <Setter Property="Background"
+                    Value="{StaticResource PrimaryBrush}" />
+            <Setter Property="CornerRadius"
+                    Value="8" />
+            <Setter Property="Padding"
+                    Value="20" />
+            <Setter Property="RenderTransformOrigin"
+                    Value="0.5,0.5" />
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <ScaleTransform ScaleX="1"
+                                    ScaleY="1" />
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="MouseEnter">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX"
+                                             To="1.05"
+                                             Duration="0:0:0.2" />
+                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY"
+                                             To="1.05"
+                                             Duration="0:0:0.2" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="MouseLeave">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX"
+                                             To="1.0"
+                                             Duration="0:0:0.2" />
+                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY"
+                                             To="1.0"
+                                             Duration="0:0:0.2" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="PulsingEllipse"
+               TargetType="Ellipse">
+            <Setter Property="Width"
+                    Value="40" />
+            <Setter Property="Height"
+                    Value="40" />
+            <Setter Property="Fill"
+                    Value="{StaticResource AccentBrush}" />
+            <Setter Property="RenderTransformOrigin"
+                    Value="0.5,0.5" />
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <ScaleTransform ScaleX="1"
+                                    ScaleY="1" />
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="Loaded">
+                    <BeginStoryboard>
+                        <Storyboard RepeatBehavior="Forever"
+                                    AutoReverse="True">
+                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX"
+                                             To="1.3"
+                                             Duration="0:0:0.8" />
+                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY"
+                                             To="1.3"
+                                             Duration="0:0:0.8" />
+                            <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                             To="0.5"
+                                             Duration="0:0:0.8" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel>
+            <TextBlock Text="Триггеры (Triggers)"
+                       Style="{StaticResource SectionHeader}" />
+            <TextBlock Style="{StaticResource InfoLabel}"
+                       Text="Демонстрация всех типов триггеров WPF: Property Trigger, DataTrigger, MultiTrigger, MultiDataTrigger, EventTrigger." />
+
+            <!-- 1. Property Trigger -->
+            <Border Style="{StaticResource Card}">
+                <StackPanel>
+                    <TextBlock Text="1️⃣ Property Trigger"
+                               Style="{StaticResource SubHeader}" />
+                    <TextBlock Style="{StaticResource InfoLabel}"
+                               Text="Срабатывает при изменении свойства элемента. Наведите мышь / нажмите на кнопку." />
+
+                    <Button Content="Наведи на меня"
+                            Style="{StaticResource PropertyTriggerButton}"
+                            HorizontalAlignment="Left"
+                            Margin="0,4" />
+
+                    <TextBlock Text="TextBox с Trigger на IsFocused:"
+                               Margin="0,8,0,2" />
+                    <TextBox Style="{StaticResource FocusTriggerTextBox}"
+                             Text="Кликни для фокуса" />
+                </StackPanel>
+            </Border>
+
+            <!-- 2. DataTrigger -->
+            <Border Style="{StaticResource Card}">
+                <StackPanel>
+                    <TextBlock Text="2️⃣ DataTrigger"
+                               Style="{StaticResource SubHeader}" />
+                    <TextBlock Style="{StaticResource InfoLabel}"
+                               Text="Срабатывает при определённом значении свойства ViewModel." />
+
+                    <StackPanel Orientation="Horizontal"
+                                Margin="0,4">
+                        <TextBlock Text="Статус: "
+                                   VerticalAlignment="Center"
+                                   Margin="0,0,8,0" />
+                        <ComboBox ItemsSource="{Binding StatusOptions}"
+                                  SelectedItem="{Binding Status, Mode=TwoWay}"
+                                  Width="150" />
+                        <Border Style="{StaticResource StatusIndicator}"
+                                Margin="12,0,8,0"
+                                VerticalAlignment="Center" />
+                        <TextBlock Text="{Binding Status}"
+                                   Style="{StaticResource StatusText}"
+                                   VerticalAlignment="Center" />
+                    </StackPanel>
+
+                    <Button Content="Переключить Active/Inactive"
+                            Command="{Binding ToggleActiveCommand}"
+                            HorizontalAlignment="Left"
+                            Margin="0,8,0,0" />
+                </StackPanel>
+            </Border>
+
+            <!-- 3. MultiTrigger -->
+            <Border Style="{StaticResource Card}">
+                <StackPanel>
+                    <TextBlock Text="3️⃣ MultiTrigger"
+                               Style="{StaticResource SubHeader}" />
+                    <TextBlock Style="{StaticResource InfoLabel}"
+                               Text="Срабатывает когда ВСЕ условия (свойства элемента) выполнены одновременно. Кликните в TextBox И наведите мышь." />
+
+                    <TextBox Style="{StaticResource MultiTriggerTextBox}"
+                             Text="Кликни + наведи мышь одновременно" />
+                </StackPanel>
+            </Border>
+
+            <!-- 4. MultiDataTrigger -->
+            <Border Style="{StaticResource Card}">
+                <StackPanel>
+                    <TextBlock Text="4️⃣ MultiDataTrigger"
+                               Style="{StaticResource SubHeader}" />
+                    <TextBlock Style="{StaticResource InfoLabel}"
+                               Text="Срабатывает когда несколько свойств ViewModel удовлетворяют условиям. Кнопка активируется когда оба поля заполнены." />
+
+                    <TextBlock Text="Логин:"
+                               Margin="0,4,0,0" />
+                    <TextBox Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" />
+
+                    <TextBlock Text="Пароль:"
+                               Margin="0,4,0,0" />
+                    <TextBox Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}" />
+
+                    <Button Style="{StaticResource LoginButtonStyle}"
+                            HorizontalAlignment="Left"
+                            Margin="0,8,0,0"
+                            Width="200" />
+                </StackPanel>
+            </Border>
+
+            <!-- 5. EventTrigger -->
+            <Border Style="{StaticResource Card}">
+                <StackPanel>
+                    <TextBlock Text="5️⃣ EventTrigger"
+                               Style="{StaticResource SubHeader}" />
+                    <TextBlock Style="{StaticResource InfoLabel}"
+                               Text="Запускает анимацию при возникновении события. Наведите мышь на блок ниже." />
+
+                    <Border Style="{StaticResource EventTriggerBorder}"
+                            HorizontalAlignment="Left"
+                            Margin="0,4">
+                        <TextBlock Text="Наведи мышь — я увеличусь!"
+                                   Foreground="White"
+                                   FontWeight="Bold"
+                                   FontSize="14" />
+                    </Border>
+
+                    <TextBlock Text="Пульсирующий круг (EventTrigger на Loaded):"
+                               Margin="0,12,0,4" />
+                    <Ellipse Style="{StaticResource PulsingEllipse}"
+                             HorizontalAlignment="Left" />
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

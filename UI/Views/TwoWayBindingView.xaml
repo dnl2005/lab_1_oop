@@ -1,0 +1,100 @@
+﻿<UserControl x:Class="UI.Views.TwoWayBindingView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:UI.Views"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel>
+            <TextBlock Text="Двухсторонняя привязка (TwoWay)"
+                       Style="{StaticResource SectionHeader}" />
+            <TextBlock Style="{StaticResource InfoLabel}"
+                       Text="Изменения распространяются в обе стороны: из контрола в ViewModel и обратно." />
+
+            <!-- Через ViewModel -->
+            <Border Style="{StaticResource Card}">
+                <StackPanel>
+                    <TextBlock Text="🔗 Через ViewModel"
+                               Style="{StaticResource SubHeader}" />
+
+                    <TextBlock Text="Имя:"
+                               Margin="0,4,0,0" />
+                    <TextBox Text="{Binding FirstName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+                    <TextBlock Text="Фамилия:"
+                               Margin="0,4,0,0" />
+                    <TextBox Text="{Binding LastName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+                    <TextBlock Margin="0,8,0,0">
+                        <Run Text="Полное имя: " />
+                        <Run Text="{Binding FullName, Mode=OneWay}"
+                             FontWeight="Bold"
+                             Foreground="{StaticResource PrimaryBrush}" />
+                    </TextBlock>
+
+                    <Button Content="Поменять имя и фамилию местами"
+                            Command="{Binding SwapNamesCommand}"
+                            HorizontalAlignment="Left"
+                            Margin="0,8,0,0" />
+
+                    <Separator Margin="0,16,0,8" />
+
+                    <TextBlock Text="Смешивание цвета (RGB через TwoWay):"
+                               Style="{StaticResource SubHeader}" />
+
+                    <TextBlock Text="Red:" />
+                    <Slider Minimum="0"
+                            Maximum="255"
+                            Value="{Binding Red, Mode=TwoWay}" />
+                    <TextBlock Text="Green:" />
+                    <Slider Minimum="0"
+                            Maximum="255"
+                            Value="{Binding Green, Mode=TwoWay}" />
+                    <TextBlock Text="Blue:" />
+                    <Slider Minimum="0"
+                            Maximum="255"
+                            Value="{Binding Blue, Mode=TwoWay}" />
+
+                    <StackPanel Orientation="Horizontal"
+                                Margin="0,8">
+                        <TextBlock Text="Цвет: "
+                                   VerticalAlignment="Center" />
+                        <TextBlock Text="{Binding ColorPreview}"
+                                   FontWeight="Bold"
+                                   VerticalAlignment="Center" />
+                    </StackPanel>
+
+                    <CheckBox Content="Я согласен с условиями"
+                              IsChecked="{Binding IsAgreed, Mode=TwoWay}" />
+                    <TextBlock Margin="0,2">
+                        <Run Text="Согласие: " />
+                        <Run Text="{Binding IsAgreed, Mode=OneWay}"
+                             FontWeight="Bold" />
+                    </TextBlock>
+                </StackPanel>
+            </Border>
+
+            <!-- Прямая привязка ElementName -->
+            <Border Style="{StaticResource Card}">
+                <StackPanel>
+                    <TextBlock Text="🔗 Прямая привязка (ElementName, TwoWay)"
+                               Style="{StaticResource SubHeader}" />
+                    <TextBlock Style="{StaticResource InfoLabel}"
+                               Text="Два TextBox связаны друг с другом. Изменение одного обновляет другой." />
+
+                    <TextBlock Text="TextBox A:" />
+                    <TextBox x:Name="TextBoxA"
+                             Text="{Binding Text, ElementName=TextBoxB, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+                    <TextBlock Text="TextBox B:"
+                               Margin="0,8,0,0" />
+                    <TextBox x:Name="TextBoxB"
+                             Text="Синхронизированный текст" />
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

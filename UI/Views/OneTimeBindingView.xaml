@@ -1,0 +1,145 @@
+﻿<UserControl x:Class="UI.Views.OneTimeBindingView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:UI.Views"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel>
+            <TextBlock Text="Одноразовая привязка (OneTime)"
+                       Style="{StaticResource SectionHeader}" />
+            <TextBlock Style="{StaticResource InfoLabel}"
+                       Text="Значение считывается один раз при загрузке. Дальнейшие изменения в ViewModel НЕ отображаются в UI." />
+
+            <!-- Через ViewModel -->
+            <Border Style="{StaticResource Card}">
+                <StackPanel>
+                    <TextBlock Text="🔗 Через ViewModel"
+                               Style="{StaticResource SubHeader}" />
+
+                    <TextBlock Text="OneTime привязка (не обновится):"
+                               Margin="0,8,0,0" />
+                    <Border Background="#FFF3E0"
+                            CornerRadius="4"
+                            Padding="10"
+                            Margin="0,4">
+                        <TextBlock Text="{Binding InitialMessage, Mode=OneTime}"
+                                   FontSize="14"
+                                   FontWeight="Bold"
+                                   Foreground="#E65100" />
+                    </Border>
+
+                    <TextBlock Text="OneTime — Timestamp:"
+                               Margin="0,8,0,0" />
+                    <Border Background="#FFF3E0"
+                            CornerRadius="4"
+                            Padding="10"
+                            Margin="0,4">
+                        <TextBlock Text="{Binding Timestamp, Mode=OneTime}"
+                                   FontSize="14"
+                                   FontWeight="Bold"
+                                   Foreground="#E65100" />
+                    </Border>
+
+                    <TextBlock Text="OneTime — Counter:"
+                               Margin="0,8,0,0" />
+                    <Border Background="#FFF3E0"
+                            CornerRadius="4"
+                            Padding="10"
+                            Margin="0,4">
+                        <TextBlock Text="{Binding Counter, Mode=OneTime}"
+                                   FontSize="14"
+                                   FontWeight="Bold"
+                                   Foreground="#E65100" />
+                    </Border>
+
+                    <Separator Margin="0,12" />
+
+                    <TextBlock Text="OneWay привязка для сравнения (обновится):"
+                               Margin="0,4,0,0" />
+                    <Border Background="#E8F5E9"
+                            CornerRadius="4"
+                            Padding="10"
+                            Margin="0,4">
+                        <TextBlock Text="{Binding LiveMessage, Mode=OneWay}"
+                                   FontSize="14"
+                                   FontWeight="Bold"
+                                   Foreground="#2E7D32" />
+                    </Border>
+
+                    <TextBlock Text="OneWay — Timestamp:"
+                               Margin="0,8,0,0" />
+                    <Border Background="#E8F5E9"
+                            CornerRadius="4"
+                            Padding="10"
+                            Margin="0,4">
+                        <TextBlock Text="{Binding Timestamp, Mode=OneWay}"
+                                   FontSize="14"
+                                   FontWeight="Bold"
+                                   Foreground="#2E7D32" />
+                    </Border>
+
+                    <TextBlock Text="OneWay — Counter:"
+                               Margin="0,8,0,0" />
+                    <Border Background="#E8F5E9"
+                            CornerRadius="4"
+                            Padding="10"
+                            Margin="0,4">
+                        <TextBlock Text="{Binding Counter, Mode=OneWay}"
+                                   FontSize="14"
+                                   FontWeight="Bold"
+                                   Foreground="#2E7D32" />
+                    </Border>
+
+                    <Button Content="Обновить значения в ViewModel"
+                            Command="{Binding UpdateValuesCommand}"
+                            HorizontalAlignment="Left"
+                            Margin="0,12,0,0" />
+
+                    <TextBlock Style="{StaticResource InfoLabel}"
+                               Margin="0,8,0,0"
+                               Text="⬆️ Нажмите кнопку: оранжевые поля (OneTime) НЕ изменятся, зелёные (OneWay) — обновятся." />
+                </StackPanel>
+            </Border>
+
+            <!-- Прямая привязка -->
+            <Border Style="{StaticResource Card}">
+                <StackPanel>
+                    <TextBlock Text="🔗 Прямая привязка (ElementName, OneTime)"
+                               Style="{StaticResource SubHeader}" />
+                    <TextBlock Style="{StaticResource InfoLabel}"
+                               Text="TextBlock получает значение TextBox один раз. Дальнейшие изменения TextBox не отразятся." />
+
+                    <TextBlock Text="Источник (TextBox):" />
+                    <TextBox x:Name="OneTimeSource"
+                             Text="Измените этот текст" />
+
+                    <TextBlock Text="OneTime привязка:"
+                               Margin="0,8,0,0" />
+                    <Border Background="#FFF3E0"
+                            CornerRadius="4"
+                            Padding="10"
+                            Margin="0,4">
+                        <TextBlock Text="{Binding Text, ElementName=OneTimeSource, Mode=OneTime}"
+                                   FontWeight="Bold"
+                                   Foreground="#E65100" />
+                    </Border>
+
+                    <TextBlock Text="OneWay привязка (для сравнения):"
+                               Margin="0,8,0,0" />
+                    <Border Background="#E8F5E9"
+                            CornerRadius="4"
+                            Padding="10"
+                            Margin="0,4">
+                        <TextBlock Text="{Binding Text, ElementName=OneTimeSource, Mode=OneWay}"
+                                   FontWeight="Bold"
+                                   Foreground="#2E7D32" />
+                    </Border>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

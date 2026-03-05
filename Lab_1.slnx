@@ -1,0 +1,7 @@
+<Solution>
+  <Folder Name="/Элементы решения/">
+    <File Path=".gitignore" />
+  </Folder>
+  <Project Path="UI/UI.csproj" />
+  <Project Path="ViewModels/ViewModels.csproj" />
+</Solution>
