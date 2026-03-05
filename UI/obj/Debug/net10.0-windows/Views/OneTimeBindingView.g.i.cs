@@ -61,7 +61,7 @@ namespace UI.Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/UI;component/views/onetimebindingview.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/UI;V1.0.0.0;component/views/onetimebindingview.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Views\OneTimeBindingView.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
