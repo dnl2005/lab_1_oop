@@ -1,43 +1,31 @@
-﻿using System;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Windows.Input;
 using ViewModels.Command;
 
 namespace ViewModels
 {
-    public class TriggersViewModel : BaseViewModel
+    public partial class TriggersViewModel : ObservableObject
     {
-        // Для DataTrigger
+        [ObservableProperty]
         private bool _isActive;
-        public bool IsActive
-        {
-            get => _isActive;
-            set => SetProperty(ref _isActive, value);
-        }
 
+        [ObservableProperty]
         private string _status = "Inactive";
-        public string Status
-        {
-            get => _status;
-            set => SetProperty(ref _status, value);
-        }
 
-        // Для MultiDataTrigger
+        [ObservableProperty]
         private bool _hasUsername;
-        public bool HasUsername
-        {
-            get => _hasUsername;
-            set => SetProperty(ref _hasUsername, value);
-        }
 
+        [ObservableProperty]
         private bool _hasPassword;
-        public bool HasPassword
-        {
-            get => _hasPassword;
-            set => SetProperty(ref _hasPassword, value);
-        }
+
+        [ObservableProperty]
+        private int _clickCount;
 
         private string _username = "";
         public string Username
@@ -61,34 +49,22 @@ namespace ViewModels
             }
         }
 
-        // Для EventTrigger — счётчик кликов
-        private int _clickCount;
-        public int ClickCount
-        {
-            get => _clickCount;
-            set => SetProperty(ref _clickCount, value);
-        }
-
         public ObservableCollection<string> StatusOptions { get; } = new()
         {
             "Inactive", "Active", "Warning", "Error"
         };
 
-        public ICommand ToggleActiveCommand { get; }
-        public ICommand IncrementClickCommand { get; }
-
-        public TriggersViewModel()
+        [RelayCommand]
+        private void ToggleActive()
         {
-            ToggleActiveCommand = new RelayCommand(_ =>
-            {
-                IsActive = !IsActive;
-                Status = IsActive ? "Active" : "Inactive";
-            });
+            IsActive = !IsActive;
+            Status = IsActive ? "Active" : "Inactive";
+        }
 
-            IncrementClickCommand = new RelayCommand(_ =>
-            {
-                ClickCount++;
-            });
+        [RelayCommand]
+        private void IncrementClick()
+        {
+            ClickCount++;
         }
     }
 }

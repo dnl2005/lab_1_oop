@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
@@ -10,39 +12,23 @@ namespace ViewModels
     /// Привязка по умолчанию: для TextBox — TwoWay, для TextBlock — OneWay.
     /// Демонстрирует разницу поведения по умолчанию для разных контролов.
     /// </summary>
-    public class DefaultBindingViewModel : BaseViewModel
+    public partial class DefaultBindingViewModel : ObservableObject
     {
+        [ObservableProperty]
         private string _textValue = "Введите текст";
-        public string TextValue
-        {
-            get => _textValue;
-            set => SetProperty(ref _textValue, value);
-        }
 
+        [ObservableProperty]
         private int _sliderValue = 50;
-        public int SliderValue
-        {
-            get => _sliderValue;
-            set => SetProperty(ref _sliderValue, value);
-        }
 
+        [ObservableProperty]
         private bool _isChecked = true;
-        public bool IsChecked
-        {
-            get => _isChecked;
-            set => SetProperty(ref _isChecked, value);
-        }
 
-        public ICommand ResetCommand { get; }
-
-        public DefaultBindingViewModel()
+        [RelayCommand]
+        private void Reset()
         {
-            ResetCommand = new RelayCommand(_ =>
-            {
-                TextValue = "Сброшено из ViewModel";
-                SliderValue = 25;
-                IsChecked = false;
-            });
+            TextValue = "Сброшено из ViewModel";
+            SliderValue = 25;
+            IsChecked = false;
         }
     }
 }

@@ -1,25 +1,16 @@
-﻿using System;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace ViewModels
 {
-    public class MainViewModel : BaseViewModel
+    public partial class MainViewModel : ObservableObject
     {
-        // Обязательно public get — иначе Binding не найдёт!
-        public DefaultBindingViewModel DefaultBindingVm { get; }
-        public TwoWayBindingViewModel TwoWayBindingVm { get; }
-        public OneTimeBindingViewModel OneTimeBindingVm { get; }
-        public OneWayBindingViewModel OneWayBindingVm { get; }
-        public TriggersViewModel TriggersVm { get; }
-
-        public MainViewModel()
-        {
-            DefaultBindingVm = new DefaultBindingViewModel();
-            TwoWayBindingVm = new TwoWayBindingViewModel();
-            OneTimeBindingVm = new OneTimeBindingViewModel();
-            OneWayBindingVm = new OneWayBindingViewModel();
-            TriggersVm = new TriggersViewModel();
-        }
+        public DefaultBindingViewModel DefaultBindingVm { get; } = new();
+        public TwoWayBindingViewModel TwoWayBindingVm { get; } = new();
+        public OneTimeBindingViewModel OneTimeBindingVm { get; } = new();
+        public OneWayBindingViewModel OneWayBindingVm { get; } = new();
+        public TriggersViewModel TriggersVm { get; } = new();
     }
 }

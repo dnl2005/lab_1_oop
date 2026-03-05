@@ -1,5 +1,8 @@
-﻿using System;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using System.Windows.Input;
 using System.Windows.Threading;
@@ -7,50 +10,25 @@ using ViewModels.Command;
 
 namespace ViewModels
 {
-    public class OneWayBindingViewModel : BaseViewModel
+    public partial class OneWayBindingViewModel : ObservableObject
     {
-        // --- OneWay (Source → Target) ---
+        [ObservableProperty]
         private string _currentTime = DateTime.Now.ToString("HH:mm:ss");
-        public string CurrentTime
-        {
-            get => _currentTime;
-            set => SetProperty(ref _currentTime, value);
-        }
 
+        [ObservableProperty]
         private int _tickCount;
-        public int TickCount
-        {
-            get => _tickCount;
-            set => SetProperty(ref _tickCount, value);
-        }
 
+        [ObservableProperty]
         private double _progress;
-        public double Progress
-        {
-            get => _progress;
-            set => SetProperty(ref _progress, value);
-        }
 
-        // --- OneWayToSource (Target → Source): TextBox обновит VM, но VM не обновит TextBox ---
+        [ObservableProperty]
         private string _userInput = "";
-        public string UserInput
-        {
-            get => _userInput;
-            set => SetProperty(ref _userInput, value);
-        }
 
+        [ObservableProperty]
         private int _userInputLength;
-        public int UserInputLength
-        {
-            get => _userInputLength;
-            set => SetProperty(ref _userInputLength, value);
-        }
 
         private readonly DispatcherTimer _timer;
         private bool _isRunning;
-
-        public ICommand ToggleTimerCommand { get; }
-        public ICommand UpdateFromVmCommand { get; }
 
         public OneWayBindingViewModel()
         {
@@ -59,20 +37,21 @@ namespace ViewModels
             {
                 CurrentTime = DateTime.Now.ToString("HH:mm:ss");
                 TickCount++;
-                Progress = (TickCount % 100);
+                Progress = TickCount % 100;
             };
+        }
 
-            ToggleTimerCommand = new RelayCommand(_ =>
-            {
-                if (_isRunning) _timer.Stop(); else _timer.Start();
-                _isRunning = !_isRunning;
-            });
+        [RelayCommand]
+        private void ToggleTimer()
+        {
+            if (_isRunning) _timer.Stop(); else _timer.Start();
+            _isRunning = !_isRunning;
+        }
 
-            UpdateFromVmCommand = new RelayCommand(_ =>
-            {
-                // Для OneWayToSource привязки это изменение НЕ дойдёт до TextBox
-                UserInput = "Установлено из ViewModel (не отобразится при OneWayToSource)";
-            });
+        [RelayCommand]
+        private void UpdateFromVm()
+        {
+            UserInput = "Установлено из ViewModel (не отобразится при OneWayToSource)";
         }
     }
 }

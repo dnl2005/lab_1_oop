@@ -35,3 +35,5 @@ C:\Users\dnl\Desktop\ооп лабы\Lab_1\UI\obj\Debug\net10.0-windows\refint\U
 C:\Users\dnl\Desktop\ооп лабы\Lab_1\UI\obj\Debug\net10.0-windows\UI.pdb
 C:\Users\dnl\Desktop\ооп лабы\Lab_1\UI\obj\Debug\net10.0-windows\UI.genruntimeconfig.cache
 C:\Users\dnl\Desktop\ооп лабы\Lab_1\UI\obj\Debug\net10.0-windows\ref\UI.dll
+C:\Users\dnl\Desktop\ооп лабы\Lab_1\UI\bin\Debug\net10.0-windows\CommunityToolkit.Mvvm.dll
+C:\Users\dnl\Desktop\ооп лабы\Lab_1\UI\obj\Debug\net10.0-windows\UI.sourcelink.json
